@@ -1,0 +1,50 @@
+name: Test case
+description: A documented test case, automated or not.
+title: '[TC] '
+labels: ['type:test-case']
+body:
+  - type: input
+    id: case_id
+    attributes:
+      label: Test case ID
+      description: Also used as the tag in the spec, for example TC-LOGIN-001.
+      placeholder: TC-LOGIN-001
+    validations:
+      required: true
+  - type: textarea
+    id: preconditions
+    attributes:
+      label: Preconditions
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps
+      value: |
+        1.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+    validations:
+      required: true
+  - type: dropdown
+    id: automated
+    attributes:
+      label: Automated
+      options: ['yes', 'no']
+    validations:
+      required: true
+  - type: input
+    id: spec
+    attributes:
+      label: Spec file
+      placeholder: tests/e2e/auth/login.spec.ts
+  - type: input
+    id: story
+    attributes:
+      label: Parent story
+      description: The story issue number, for example #2.

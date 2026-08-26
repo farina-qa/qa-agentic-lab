@@ -1,0 +1,30 @@
+name: User story
+description: A user-facing slice of a requirement.
+title: '[STORY] '
+labels: ['type:user-story']
+body:
+  - type: textarea
+    id: story
+    attributes:
+      label: Story
+      value: |
+        As a 
+        I want 
+        So that
+    validations:
+      required: true
+  - type: textarea
+    id: criteria
+    attributes:
+      label: Acceptance criteria
+      value: |
+        - [ ]
+    validations:
+      required: true
+  - type: input
+    id: requirement
+    attributes:
+      label: Parent requirement
+      description: The requirement issue number, for example #1.
+    validations:
+      required: true

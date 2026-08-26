@@ -1,0 +1,31 @@
+{
+  "name": "qa-agentic-lab",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Playwright tests against saucedemo.com, with Claude Code agents for defect triage and guarded self-healing.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^22.19.0",
+    "dotenv": "^17.2.0",
+    "eslint": "^9.39.0",
+    "eslint-plugin-playwright": "^2.2.0",
+    "prettier": "^3.6.0",
+    "typescript": "^5.9.0",
+    "typescript-eslint": "^8.46.0"
+  }
+}

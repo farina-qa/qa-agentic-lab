@@ -1,0 +1,28 @@
+name: Requirement
+description: A capability the product under test must provide.
+title: '[REQ] '
+labels: ['type:requirement']
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What this covers and why it matters to a user.
+    validations:
+      required: true
+  - type: textarea
+    id: criteria
+    attributes:
+      label: Acceptance criteria
+      description: One checkbox per verifiable statement.
+      value: |
+        - [ ]
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options: [auth, inventory, cart, checkout, api]
+    validations:
+      required: true
