@@ -36,6 +36,11 @@ jobs:
           SAUCE_LOCKED_OUT_USER: ${{ secrets.SAUCE_LOCKED_OUT_USER }}
           SAUCE_PASSWORD: ${{ secrets.SAUCE_PASSWORD }}
 
+      # Written even on failure, because a red run is when the summary matters.
+      - name: Publish results to the run summary
+        if: ${{ !cancelled() }}
+        run: node scripts/ci-summary.mjs
+
       # Uploaded even on failure, because a failed run is when the report matters.
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
