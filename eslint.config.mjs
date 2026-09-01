@@ -11,4 +11,11 @@ export default tseslint.config(
     files: ['tests/**/*.ts'],
     ...playwright.configs['flat/recommended'],
   },
+  {
+    // CI helper scripts are plain Node, so they get the Node globals. Stripping
+    // ANSI codes needs the escape character in a regex, which is the point.
+    files: ['scripts/**/*.mjs'],
+    languageOptions: { globals: { process: 'readonly', console: 'readonly' } },
+    rules: { 'no-control-regex': 'off' },
+  },
 );

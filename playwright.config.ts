@@ -21,7 +21,9 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
 
   reporter: [
-    ['list'],
+    // 'github' annotates the failing lines directly on the PR diff; locally
+    // 'list' prints one line per test.
+    process.env.CI ? ['github'] : ['list'],
     ['html', { open: 'never' }],
     // The JSON report is what the defect-triage agent reads.
     ['json', { outputFile: 'test-results/results.json' }],
