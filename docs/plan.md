@@ -184,7 +184,8 @@ No scheduled runs. When you want a full pass outside a PR, trigger `e2e.yml` man
 3. Confirm the requirement → story → test-case chain resolves in GitHub, and each `@TC-LOGIN-00x` tag matches what its issue records.
 4. Open a PR; confirm `e2e.yml` runs green and uploads a downloadable report artifact.
 5. Break a locator deliberately, rerun, then `/triage`: it must classify selector drift and **not** file a product bug.
-6. Restore the locator, change an expected message instead, rerun `/triage`: it files a bug linked to the right test case, and files nothing new on a second run.
+6. Restore the locator. The product-bug path is verified in phase 2, against a real `problem_user` defect with a clean working tree: `/triage` files a bug linked to the right test case, and files nothing new on a second run.
+   Editing a spec to fake the failure does not work, because the agent reads `git diff` to tell a changed test from a changed app and correctly refuses to file.
 7. gitleaks passes and `git grep` finds no credential literals; `git log -p -- .env` shows nothing.
 
 ---
