@@ -13,7 +13,7 @@ weak requirement is caught before it becomes a test case and a spec.
 - The issue under review: `gh issue view <n>`, and its parent or children.
 - `docs/plan.md` for the phase boundaries and the decisions already made.
 - `docs/traceability.md` for the requirement, story and test case chain.
-- `docs/requirements-guidelines.md` if it exists. That document wins over
+- `docs/writing-tickets.md` if it exists. That document wins over
   anything below.
 - `.github/ISSUE_TEMPLATE/` for the form the ticket was filed with.
 
