@@ -68,7 +68,7 @@ qa-agentic-lab/
 - **gitleaks as a required CI check** on every PR, justified by the public-repo constraint.
 - **API tests** use Playwright's built-in `APIRequestContext`, so there is one runner and one report.
 
-> **Honesty note:** saucedemo is a static SPA with **no backend API**. The API track therefore targets **restful-booker**, a free public practice API, and `docs/test-strategy.md` says so plainly: "API practice track, unrelated to the SUT because saucedemo exposes none." Pretending otherwise would be the kind of thing a reviewer catches.
+> **Regarding API testing:** Since saucedemo is a static SPA with no backend API, this plan targets restful-booker, a free public practice API unrelated to saucedemo, for API testing demonstration purposes.
 
 ---
 
@@ -118,7 +118,7 @@ Slash commands `/triage`, `/heal` and `/new-test-case` are the entry points, run
 
 Parsing `trace.zip` is heavy for a model. Instead, a `test.afterEach` hook attaches a small agent-readable payload on failure via `testInfo.attach()`: `{ selector, errorMessage, domSnippet }`, plus a screenshot. The agents read that, the JSON reporter output, and `git diff` since the last green commit to tell "the test changed" from "the app changed".
 
-### Classification decision tree (the honest part)
+### Classification decision tree
 
 | Signal | Verdict |
 | --- | --- |
@@ -184,7 +184,8 @@ No scheduled runs. When you want a full pass outside a PR, trigger `e2e.yml` man
 3. Confirm the requirement → story → test-case chain resolves in GitHub, and each `@TC-LOGIN-00x` tag matches what its issue records.
 4. Open a PR; confirm `e2e.yml` runs green and uploads a downloadable report artifact.
 5. Break a locator deliberately, rerun, then `/triage`: it must classify selector drift and **not** file a product bug.
-6. Restore the locator, change an expected message instead, rerun `/triage`: it files a bug linked to the right test case, and files nothing new on a second run.
+6. Restore the locator. The product-bug path is verified in phase 2, against a real `problem_user` defect with a clean working tree: `/triage` files a bug linked to the right test case, and files nothing new on a second run.
+   Editing a spec to fake the failure does not work, because the agent reads `git diff` to tell a changed test from a changed app and correctly refuses to file.
 7. gitleaks passes and `git grep` finds no credential literals; `git log -p -- .env` shows nothing.
 
 ---
