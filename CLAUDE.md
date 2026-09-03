@@ -58,3 +58,10 @@ Agents run locally, on demand. None run in CI.
 - Comments explain why a choice was made, not what the line does. Match that tone.
 - Browsers: chromium locally and in CI; webkit cannot launch on Fedora
   (`docs/adr/0001-browser-matrix.md`).
+
+## Workflow
+
+Work starts from a GitHub issue: read it, move it to In Progress, then create a
+branch and a worktree for it under `.worktrees/` at the repository root
+(gitignored). Once the issue's PR is merged, delete both the branch and the
+worktree.
