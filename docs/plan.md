@@ -35,8 +35,8 @@ qa-agentic-lab/
 │   ├── ISSUE_TEMPLATE/       # requirement / user-story / bug / test-case forms
 │   └── workflows/            # e2e.yml, secrets-scan.yml
 ├── .claude/
-│   ├── agents/               # defect-triage.md, test-healer.md
-│   ├── commands/             # /triage, /heal, /new-test-case
+│   ├── agents/               # defect-triage.md, devils-advocate.md, test-healer.md
+│   ├── commands/             # /triage, /devils-advocate, /heal, /new-test-case
 │   └── settings.json         # shared permissions (settings.local.json gitignored)
 ├── src/
 │   ├── pages/                # LoginPage.ts, InventoryPage.ts, CartPage.ts, CheckoutPage.ts
@@ -49,6 +49,8 @@ qa-agentic-lab/
 ├── docs/
 │   ├── test-strategy.md      # known-defect track, self-healing boundaries
 │   ├── traceability.md       # requirement → story → test case → spec
+│   ├── writing-tickets.md    # conventions for requirements, stories, test cases
+│   ├── reviews/              # devils-advocate reports, one file per review
 │   └── adr/                  # short architecture decision records
 ├── playwright.config.ts
 ├── .env.example              # placeholders only, committed
@@ -110,9 +112,10 @@ The test-case issue records the spec path; requirement → story → test case l
 | Agent | Model | Job | Tools |
 | --- | --- | --- | --- |
 | `defect-triage` | Sonnet | Read the JSON report and failure artifacts, classify, dedupe against open issues, file or comment on a bug | Read, Grep, Bash(`gh`) |
+| `devils-advocate` | Sonnet | Argue against a requirement, story or test case before work starts, and archive the review under `docs/reviews/` | Read, Grep, Glob, Bash(`gh`), Write |
 | `test-healer` | Sonnet | Locator failures only: propose a minimal fix on a branch, open a PR | Read, Edit, Bash(`git`, `gh pr create`) |
 
-Slash commands `/triage`, `/heal` and `/new-test-case` are the entry points, run by you when you want them. `/new-test-case <story#>` scaffolds a test-case issue plus a spec stub, wiring the traceability chain in one step.
+Slash commands `/triage`, `/devils-advocate`, `/heal` and `/new-test-case` are the entry points, run by you when you want them. `/new-test-case <story#>` scaffolds a test-case issue plus a spec stub, wiring the traceability chain in one step.
 
 ### Failure artifacts the agents read
 
