@@ -68,7 +68,7 @@ qa-agentic-lab/
 - **gitleaks as a required CI check** on every PR, justified by the public-repo constraint.
 - **API tests** use Playwright's built-in `APIRequestContext`, so there is one runner and one report.
 
-> **Honesty note:** saucedemo is a static SPA with **no backend API**. The API track therefore targets **restful-booker**, a free public practice API, and `docs/test-strategy.md` says so plainly: "API practice track, unrelated to the SUT because saucedemo exposes none." Pretending otherwise would be the kind of thing a reviewer catches.
+> **Regarding API testing:** Since saucedemo is a static SPA with no backend API, this plan targets restful-booker, a free public practice API unrelated to saucedemo, for API testing demonstration purposes.
 
 ---
 
@@ -118,7 +118,7 @@ Slash commands `/triage`, `/heal` and `/new-test-case` are the entry points, run
 
 Parsing `trace.zip` is heavy for a model. Instead, a `test.afterEach` hook attaches a small agent-readable payload on failure via `testInfo.attach()`: `{ selector, errorMessage, domSnippet }`, plus a screenshot. The agents read that, the JSON reporter output, and `git diff` since the last green commit to tell "the test changed" from "the app changed".
 
-### Classification decision tree (the honest part)
+### Classification decision tree
 
 | Signal | Verdict |
 | --- | --- |

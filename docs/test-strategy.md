@@ -8,11 +8,9 @@ the JavaScript and there is no backend to call.
 
 ## What that means for API testing
 
-saucedemo exposes no API, so there is nothing here to test at the API level.
-Rather than invent one, the API track targets **restful-booker**, a free public
-practice API, and is clearly separated in `tests/api/`. It exists to practise
-API testing, and it is unrelated to the system under test. Saying so plainly is
-better than a suite that pretends to cover something it does not.
+saucedemo exposes no API, so the API track targets **restful-booker**, a free
+public practice API unrelated to saucedemo, kept separate in `tests/api/`. It
+exists to demonstrate API testing.
 
 ## Intentional defects
 
