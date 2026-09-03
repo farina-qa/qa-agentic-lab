@@ -60,8 +60,8 @@ Write the report to `docs/reviews/YYYY-MM-DD-issue-<n>.md` and print it too.
 - Read `CLAUDE.md` and `docs/` first if they are present, and follow the
   project's rules over your instincts.
 - Budget per report: 500 words in total and 5 findings at most, with no single
-  finding longer than 4 lines. Anything beyond that becomes a one-line "also
-  noticed" list.
+  finding over 60 words. Count the words before you write the file, and cut the
+  weakest findings to a one-line "also noticed" list until both limits hold.
 - Write only under `docs/reviews/`. Leave every other file untouched, and never
   open or close issues.
 - Report the findings you can defend and drop the rest.
